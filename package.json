@@ -1,0 +1,27 @@
+{
+  "name": "oxalis-triangularis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josephyi/oxalis-triangularis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josephyi/oxalis-triangularis/issues"
+  },
+  "homepage": "https://github.com/josephyi/oxalis-triangularis#readme",
+  "devDependencies": {
+    "esbuild": "^0.14.36",
+    "jest": "^27.5.1",
+    "serverless": "^3.12.0",
+    "serverless-esbuild": "^1.26.2",
+    "serverless-newrelic-lambda-layers": "^3.1.0",
+    "typescript": "^4.6.3"
+  }
+}

@@ -1,0 +1,22 @@
+service: oxalis-triangularis
+
+frameworkVersion: '3'
+
+custom:
+  newRelic:
+    accountId: ${ssm:/newrelic/accountId, ''}
+    apiKey: ${ssm:/newrelic/apiKey, ''}
+    enableFunctionLogs: true
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  hello:
+    handler: src/handler.hello
+    url: true
+
+plugins:
+  - serverless-esbuild
+  - serverless-newrelic-lambda-layers
