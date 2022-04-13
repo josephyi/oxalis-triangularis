@@ -5,24 +5,11 @@ on:
   push:
   workflow_dispatch:
 
-# env:
-#   # Workaround - https://github.com/actions/runner/issues/1483
-#   DEPLOY: ${{ github.ref == 'ref/heads/main' || github.event_name == 'workflow_dispatch' }}
-
 jobs:
-  build-setup:
-    runs-on: ubuntu-latest
-    steps:
-      - id: set-output-deploy
-        run: |
-          echo "::set-output name=deploy::${{ github.ref == 'ref/heads/main' || github.event_name == 'workflow_dispatch' }}"
-    outputs:
-      deploy: ${{ steps.set-output-deploy.outputs.deploy }}
   build:
-    needs: [build-setup]
     uses: ./.github/workflows/sls-pipeline.yml
     with:
-      deploy: ${{ fromJSON(needs.build-setup.outputs.deploy) }}
+      deploy: ${{ github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch' }}
       sls-stage: dev
     secrets:
       role-to-assume: ${{ secrets.ROLE_TO_ASSUME}}
